@@ -37,8 +37,6 @@ eureka:
 info:
   app.name: hupeng-springcloud
   company.name: hupeng-dev
-  build.artifactId: @project.artifactId@
-  build.version: @project.version@
 ---
 server:
   port: 8001
@@ -74,5 +72,3 @@ eureka:
 info:
   app.name: hupeng-springcloud
   company.name: hupeng-test
-  build.artifactId: @project.artifactId@
-  build.version: @project.version@
