@@ -13,7 +13,7 @@ mybatis:
 spring:
   profiles: dev
   application:
-    name: springcloud-config-dept-client  #与GitHub上的配置文件对应（不要.yml）
+    name: springcloud-config-dept-client  #同一功能微服务集群这个微服务名一定要一致
   datasource:
     username: root
     password: root
@@ -28,15 +28,15 @@ spring:
 eureka:
   client: #客户端注册进eureka服务列表
     service-url:
-      defaultZone:  http://eureka7001.com:7001/eureka/   #,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
+      defaultZone:   http://eureka7001.com:7001/eureka/
       #eureka单机版配置 defaultZone: http://localhost:7001/eureka
   instance:
-    instance-id: dept8001.com  #别名处理。用于在Eureka显示微服务的名字
+    instance-id: dept8001.com  #自定义服务名称信息，别名处理。用于在Eureka显示微服务的名字。
     prefer-ip-address: true  #访问路径可以显示ip
 #eureka控制页面点击服务列表进来的info页面
 info:
   app.name: hupeng-springcloud
-  company.name: hupeng
+  company.name: hupeng-dev
   build.artifactId: @project.artifactId@
   build.version: @project.version@
 ---
@@ -50,11 +50,11 @@ mybatis:
 spring:
   profiles: test
   application:
-    name: springcloud-config-dept-client  #与GitHub上的配置文件对应（不要.yml）
+    name: springcloud-config-dept-client  #同一功能微服务集群这个微服务名一定要一致
   datasource:
     username: root
     password: root
-    url: jdbc:mysql://localhost:3306/test2             # 数据库名称
+    url: jdbc:mysql://localhost:3306/test2              # 数据库名称
     driver-class-name: org.gjt.mm.mysql.Driver              # mysql驱动包
     type: com.alibaba.druid.pool.DruidDataSource            # 当前数据源操作类型
     dbcp2: # 数据库连接池
@@ -65,14 +65,14 @@ spring:
 eureka:
   client: #客户端注册进eureka服务列表
     service-url:
-      defaultZone:  http://eureka7001.com:7001/eureka/   #,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
+      defaultZone:   http://eureka7001.com:7001/eureka/
       #eureka单机版配置 defaultZone: http://localhost:7001/eureka
   instance:
-    instance-id: dept8001.com  #别名处理。用于在Eureka显示微服务的名字
+    instance-id: dept8001.com  #自定义服务名称信息，别名处理。用于在Eureka显示微服务的名字。
     prefer-ip-address: true  #访问路径可以显示ip
 #eureka控制页面点击服务列表进来的info页面
 info:
   app.name: hupeng-springcloud
-  company.name: hupeng
+  company.name: hupeng-test
   build.artifactId: @project.artifactId@
   build.version: @project.version@
