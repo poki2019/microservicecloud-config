@@ -1,0 +1,78 @@
+spring:
+  profiles:
+    active:
+      - dev
+---
+server:
+  port: 8001
+mybatis:
+  config-location: classpath:mybatis/mybatis.cfg.xml        # mybatis配置文件所在路径
+  mapper-locations:
+    - classpath:mybatis/mapper/**/*.xml                       # mapper映射文件
+  type-aliases-package: com.hupeng.springcloud.entities    # 所有Entity别名类所在包
+spring:
+  profiles: dev
+  application:
+    name: springcloud-config-dept-client  #与GitHub上的配置文件对应（不要.yml）
+  datasource:
+    username: root
+    password: root
+    url: jdbc:mysql://localhost:3306/test              # 数据库名称
+    driver-class-name: org.gjt.mm.mysql.Driver              # mysql驱动包
+    type: com.alibaba.druid.pool.DruidDataSource            # 当前数据源操作类型
+    dbcp2: # 数据库连接池
+      min-idle: 5 # 数据库连接池的最小维持连接数
+      initial-size: 5  # 初始化连接数
+      max-total: 5   # 最大连接数
+      max-wait-millis: 1000  # 等待连接获取的最大超时时间(毫秒)
+eureka:
+  client: #客户端注册进eureka服务列表
+    service-url:
+      defaultZone:  http://eureka7001.com:7001/eureka/   #,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
+      #eureka单机版配置 defaultZone: http://localhost:7001/eureka
+  instance:
+    instance-id: dept8001.com  #别名处理。用于在Eureka显示微服务的名字
+    prefer-ip-address: true  #访问路径可以显示ip
+#eureka控制页面点击服务列表进来的info页面
+info:
+  app.name: hupeng-springcloud
+  company.name: hupeng
+  build.artifactId: @project.artifactId@
+  build.version: @project.version@
+---
+server:
+  port: 8001
+mybatis:
+  config-location: classpath:mybatis/mybatis.cfg.xml        # mybatis配置文件所在路径
+  mapper-locations:
+    - classpath:mybatis/mapper/**/*.xml                       # mapper映射文件
+  type-aliases-package: com.hupeng.springcloud.entities    # 所有Entity别名类所在包
+spring:
+  profiles: test
+  application:
+    name: springcloud-config-dept-client  #与GitHub上的配置文件对应（不要.yml）
+  datasource:
+    username: root
+    password: root
+    url: jdbc:mysql://localhost:3306/test2             # 数据库名称
+    driver-class-name: org.gjt.mm.mysql.Driver              # mysql驱动包
+    type: com.alibaba.druid.pool.DruidDataSource            # 当前数据源操作类型
+    dbcp2: # 数据库连接池
+      min-idle: 5 # 数据库连接池的最小维持连接数
+      initial-size: 5  # 初始化连接数
+      max-total: 5   # 最大连接数
+      max-wait-millis: 1000  # 等待连接获取的最大超时时间(毫秒)
+eureka:
+  client: #客户端注册进eureka服务列表
+    service-url:
+      defaultZone:  http://eureka7001.com:7001/eureka/   #,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
+      #eureka单机版配置 defaultZone: http://localhost:7001/eureka
+  instance:
+    instance-id: dept8001.com  #别名处理。用于在Eureka显示微服务的名字
+    prefer-ip-address: true  #访问路径可以显示ip
+#eureka控制页面点击服务列表进来的info页面
+info:
+  app.name: hupeng-springcloud
+  company.name: hupeng
+  build.artifactId: @project.artifactId@
+  build.version: @project.version@
